@@ -1,0 +1,130 @@
+[
+    {
+        "id": 1,
+        "name": "American"
+    },
+    {
+        "id": 2,
+        "name": "Japanese"
+    },
+    {
+        "id": 3,
+        "name": "French"
+    },
+    {
+        "id": 4,
+        "name": "European"
+    },
+    {
+        "id": 5,
+        "name": "Hawaiian"
+    },
+    {
+        "id": 6,
+        "name": "Polynesian"
+    },
+    {
+        "id": 7,
+        "name": "Vietnamese"
+    },
+    {
+        "id": 8,
+        "name": "Pacific Rim"
+    },
+    {
+        "id": 9,
+        "name": "Italian"
+    },
+    {
+        "id": 10,
+        "name": "Irish"
+    },
+    {
+        "id": 11,
+        "name": "Belgian"
+    },
+    {
+        "id": 12,
+        "name": "Asian"
+    },
+    {
+        "id": 13,
+        "name": "Contemporary"
+    },
+    {
+        "id": 14,
+        "name": "Pasta"
+    },
+    {
+        "id": 15,
+        "name": "Kosher"
+    },
+    {
+        "id": 16,
+        "name": "Cafe"
+    },
+    {
+        "id": 17,
+        "name": "Steak"
+    },
+    {
+        "id": 18,
+        "name": "Seafood"
+    },
+    {
+        "id": 19,
+        "name": "Eclectic"
+    },
+    {
+        "id": 20,
+        "name": "Continental"
+    },
+    {
+        "id": 21,
+        "name": "Oyster"
+    },
+    {
+        "id": 22,
+        "name": "International"
+    },
+    {
+        "id": 23,
+        "name": "Traditional"
+    },
+    {
+        "id": 24,
+        "name": "Bistro"
+    },
+    {
+        "id": 25,
+        "name": "Vegetarian"
+    },
+    {
+        "id": 26,
+        "name": "Coffee"
+    },
+    {
+        "id": 27,
+        "name": "Tea"
+    },
+    {
+        "id": 28,
+        "name": "Sandwiches"
+    },
+    {
+        "id": 29,
+        "name": "Bakery"
+    },
+    {
+        "id": 30,
+        "name": "Grill"
+    },
+    {
+        "id": 31,
+        "name": "British"
+    },
+    {
+        "id": 32,
+        "name": "Fusion"
+    }
+]

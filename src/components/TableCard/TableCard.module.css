@@ -5,4 +5,10 @@
     margin: 0 auto;
     margin-top: 3rem;
     padding-left: 1rem;
+    transition: 0.2s ease-in-out;
+}
+
+.TableCard:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
 }

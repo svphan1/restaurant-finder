@@ -1,0 +1,10 @@
+.StatesDropdown {
+    display: flex;
+    width: 50%;
+    justify-content: space-between;
+}
+
+.StatesDropdown select {
+    height: 20px;
+    margin-top: 1rem;
+}
