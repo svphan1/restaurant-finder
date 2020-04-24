@@ -1,7 +1,7 @@
 import React from 'react';
 import classes from './SearchBar.module.css';
 
-const SearchBar = () => (
+const SearchBar = (props) => (
     <div className={classes.SearchBar}>
         <div className={classes.SearchInput}>
             <input type="text" placeholder="Enter restaurant name..."></input>

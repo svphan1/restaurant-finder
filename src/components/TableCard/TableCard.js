@@ -1,35 +1,23 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import classes from './TableCard.module.css';
 
-const TableCard = () => {
-    const [data, setData] = useState([]);
-
-    async function getRestaurants() {
-        await fetch(
-            'https://code-challenge.spectrumtoolbox.com/api/restaurants',
-            {
-                headers: {
-                    Authorization: 'Api-Key q3MNxtfep8Gt',
-                },
-            }
-        )
-            .then((res) => res.json())
-            .then(setData);
-    }
-
-    useEffect(() => {
-        getRestaurants();
+const TableCard = (props) => {
+    let limitedResult = props.result.slice(0, 10);
+    let sortedResult = limitedResult.sort(function (a, b) {
+        if (a.name < b.name) return -1;
+        else if (a.name > b.name) return 1;
+        return 0;
     });
 
     return (
         <div>
-            {data.slice(0, 10).map((item) => (
+            {sortedResult.map((item) => (
                 <div key={item.id} className={classes.TableCard}>
                     <p>{item.name}</p>
                     <p>{item.genre}</p>
                     <p>{item.telephone}</p>
                     <p>
-                        {item.city} {item.state}
+                        {item.city}, {item.state}
                     </p>
                 </div>
             ))}
