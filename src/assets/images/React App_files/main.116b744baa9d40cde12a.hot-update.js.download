@@ -1,0 +1,25 @@
+webpackHotUpdate("main",{
+
+/***/ "./node_modules/css-loader/dist/cjs.js?!./node_modules/postcss-loader/src/index.js?!./src/components/UI/Background/Background.module.css":
+/*!***************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??ref--6-oneOf-4-1!./node_modules/postcss-loader/src??postcss!./src/components/UI/Background/Background.module.css ***!
+  \***************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// Imports
+var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+exports = ___CSS_LOADER_API_IMPORT___(false);
+// Module
+exports.push([module.i, ".Background_Background__3kqWJ {\r\n    height: 470px;\r\n}\r\n\r\n.Background_Background__3kqWJ img {\r\n    height: 100%;\r\n    width: 100%;\r\n    margin-top: -7px;\r\n}\r\n", ""]);
+// Exports
+exports.locals = {
+	"Background": "Background_Background__3kqWJ"
+};
+module.exports = exports;
+
+
+/***/ })
+
+})
+//# sourceMappingURL=main.116b744baa9d40cde12a.hot-update.js.map

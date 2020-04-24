@@ -1,0 +1,17 @@
+.SearchBar {
+    height: 10rem;
+    width: 60%;
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border-radius: 10px;
+}
+
+.SearchInput {
+    display: flex;
+    justify-content: space-evenly;
+    border-radius: 5px;
+}

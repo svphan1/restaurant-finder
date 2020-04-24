@@ -1,0 +1,15 @@
+webpackHotUpdate("main",{
+
+/***/ "./src/assets/images/background.jpg":
+/*!******************************************!*\
+  !*** ./src/assets/images/background.jpg ***!
+  \******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "static/media/background.8998927f.jpg";
+
+/***/ })
+
+})
+//# sourceMappingURL=main.26dab9bdfb87b595f9bc.hot-update.js.map

@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import Layout from './components/Layout/Layout';
+import TableCard from '../src/components/TableCard/TableCard';
+import Background from '../src/components/UI/Background/Background';
 import './App.css';
 
 class App extends Component {
@@ -15,7 +17,10 @@ class App extends Component {
     render() {
         return (
             <div>
-                <Layout />
+                <Layout>
+                    <Background />
+                    <TableCard />
+                </Layout>
             </div>
         );
     }
