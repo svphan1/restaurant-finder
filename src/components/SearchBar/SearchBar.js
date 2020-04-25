@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import classes from './SearchBar.module.css';
 import StatesDropdown from './FilterDropdowns/StatesDropdown';
+import Pagination from '../Pagination/Pagination';
 import Button from '../UI/Button/Button';
 
 const SearchBar = (props) => {
@@ -42,6 +43,11 @@ const SearchBar = (props) => {
                 selectedGenreHandler={props.selectedGenreHandler}
             />
             <hr />
+            <Pagination
+                restaurantsPerPage={props.restaurantsPerPage}
+                totalRestaurants={props.totalRestaurants}
+                paginate={props.paginate}
+            />
         </div>
     );
 };

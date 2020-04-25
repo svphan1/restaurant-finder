@@ -1,0 +1,22 @@
+.Pagination {
+    margin-top: -3px;
+    display: flex;
+    justify-content: center;
+}
+
+.Pagination li {
+    width: 1.2rem;
+    text-align: center;
+    list-style: none;
+    margin-left: 25px;
+}
+
+.Pagination li:hover {
+    border-radius: 10px;
+    background-color: rgb(226, 225, 225);
+}
+
+.Pagination a {
+    margin: 0 auto;
+    text-decoration: none;
+}

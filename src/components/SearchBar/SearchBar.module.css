@@ -1,20 +1,21 @@
 .SearchBar {
     height: 10rem;
-    width: 60%;
+    min-width: 60%;
     display: inline-block;
-    position: absolute;
+    position: relative;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: white;
     border-radius: 10px;
     padding-top: 20px;
+    z-index: 10;
 }
 
 .SearchContainer {
-    display: flex;
-    justify-content: space-evenly;
     height: 2rem;
+    margin: 1rem 9rem;
+    box-sizing: border-box;
 }
 
 .SearchBar input {

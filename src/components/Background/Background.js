@@ -1,6 +1,6 @@
 import React from 'react';
-import background from '../../../assets/images/background.jpg';
-import SearchBar from '../../SearchBar/SearchBar';
+import background from '../../assets/images/background.jpg';
+import SearchBar from '../SearchBar/SearchBar';
 import classes from './Background.module.css';
 
 const Background = (props) => (
@@ -10,6 +10,9 @@ const Background = (props) => (
             resetSearch={props.resetSearch}
             selectedStateHandler={props.selectedStateHandler}
             selectedGenreHandler={props.selectedGenreHandler}
+            restaurantsPerPage={props.restaurantsPerPage}
+            totalRestaurants={props.totalRestaurants}
+            paginate={props.paginate}
         />
         <img src={background} alt="food background" />
     </div>

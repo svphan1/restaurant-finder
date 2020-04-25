@@ -1,8 +1,7 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { Fragment, useState, useEffect, useRef } from 'react';
 import Layout from '../components/Layout/Layout';
 import TableCard from '../components/TableCard/TableCard';
-import Background from '../components/UI/Background/Background';
-import './App.css';
+import Background from '../components/Background/Background';
 
 const App = () => {
     const [restaurants, setData] = useState([]);
@@ -11,6 +10,8 @@ const App = () => {
     const [selectedState, setSelectedState] = useState('');
     const [selectedGenre, setSelectedGenre] = useState('');
     const [filteredRestaurants, setFilteredRestaurants] = useState([]);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [restaurantsPerPage] = useState(10);
 
     async function getRestaurants() {
         await fetch(
@@ -100,30 +101,51 @@ const App = () => {
         setFilteredRestaurants([]);
     };
 
+    const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
+    const indexOfLastRestaurant = currentPage * restaurantsPerPage;
+    const indexOfFirstRestaurant = indexOfLastRestaurant - restaurantsPerPage;
+    const currentRestaurants = restaurants.slice(
+        indexOfFirstRestaurant,
+        indexOfLastRestaurant
+    );
+
     const wasFiltered = selectedState || selectedGenre;
 
     return (
-        <div>
+        <Fragment>
             <Layout>
                 <Background
                     handleSearch={handleSearch}
                     resetSearch={resetSearch}
                     selectedStateHandler={selectedStateHandler}
                     selectedGenreHandler={selectedGenreHandler}
+                    restaurantsPerPage={restaurantsPerPage}
+                    totalRestaurants={restaurants.length}
+                    paginate={paginate}
                 />
                 {wasFiltered && filteredRestaurants.length < 1 ? (
-                    <p>No restaurants were found for the state</p>
+                    <p
+                        style={{
+                            textAlign: 'center',
+                            fontWeight: 'bold',
+                            marginTop: '5rem',
+                            fontSize: '1.2rem',
+                        }}
+                    >
+                        Welp, sorry no restaurants were found for that state!
+                    </p>
                 ) : (
                     <TableCard
                         restaurants={
                             filteredRestaurants.length
                                 ? filteredRestaurants
-                                : restaurants
+                                : currentRestaurants
                         }
                     />
                 )}
             </Layout>
-        </div>
+        </Fragment>
     );
 };
 
