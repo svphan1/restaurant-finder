@@ -6,6 +6,8 @@ import './App.css';
 
 const App = () => {
     const [restaurants, setData] = useState([]);
+    const [city, setCity] = useState([]);
+    const [restaurant, setRestaurant] = useState([]);
     const [selectedState, setSelectedState] = useState('');
     const [selectedGenre, setSelectedGenre] = useState('');
     const [filteredRestaurants, setFilteredRestaurants] = useState([]);
@@ -38,11 +40,21 @@ const App = () => {
     }, [filteredRestaurants, restaurants]);
 
     const filterRestaurantsByState = (state) => {
-        return restaurants.filter((result) => result.state === state);
+        let restaurantsToUse =
+            (city || restaurant) && filteredRestaurants.length
+                ? filteredRestaurants
+                : restaurants;
+        return restaurantsToUse.filter((result) => result.state === state);
     };
 
     const filterRestaurantsByGenre = (genre) => {
-        return restaurants.filter((result) => result.genre.includes(genre));
+        const restaurantsToUse =
+            (city || restaurant) && filteredRestaurants.length
+                ? filteredRestaurants
+                : restaurants;
+        return restaurantsToUse.filter((result) =>
+            result.genre.includes(genre)
+        );
     };
 
     const selectedStateHandler = (e) => {
@@ -58,12 +70,44 @@ const App = () => {
         setFilteredRestaurants(filterRestaurantsByGenre(value));
     };
 
+    const handleSearch = (city, restaurant) => {
+        if (!city && !restaurant) {
+            return;
+        }
+
+        setCity(city);
+        setRestaurant(restaurant);
+
+        const searchedRestaurants = restaurants.filter((r) => {
+            if (city && restaurant) {
+                console.log('both section');
+                return (
+                    r.city.toLowerCase() === city.toLowerCase() ||
+                    r.name.toLowerCase() === restaurant.toLowerCase()
+                );
+            } else if (city && !restaurant) {
+                console.log('city section');
+                return r.city.toLowerCase() === city.toLowerCase();
+            }
+            console.log('res section');
+            return r.name.toLowerCase() === restaurant.toLowerCase();
+        });
+
+        setFilteredRestaurants(searchedRestaurants);
+    };
+
+    const resetSearch = () => {
+        setFilteredRestaurants([]);
+    };
+
     const wasFiltered = selectedState || selectedGenre;
 
     return (
         <div>
             <Layout>
                 <Background
+                    handleSearch={handleSearch}
+                    resetSearch={resetSearch}
                     selectedStateHandler={selectedStateHandler}
                     selectedGenreHandler={selectedGenreHandler}
                 />
