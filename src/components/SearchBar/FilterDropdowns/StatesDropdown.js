@@ -3,12 +3,9 @@ import states from './states.json';
 import genres from './genres.json';
 import classes from './StatesDropdown.module.css';
 
-const StatesDropdown = () => {
-    const [data, setData] = useState({ states, genres });
-
-    useEffect(() => {
-        console.log(genres);
-    }, []);
+const StatesDropdown = (props) => {
+    const statesList = states;
+    const genresList = genres;
 
     return (
         <div className={classes.StatesDropdown}>
@@ -16,16 +13,18 @@ const StatesDropdown = () => {
                 <strong>Filter by:</strong>
             </p>
             <p>States</p>
-            <select name="states">
-                {data.states.map((states) => (
+            <select name="states" onChange={props.selectedStateHandler}>
+                <option value=""></option>
+                {statesList.map((states) => (
                     <option key={states.code} value={states.code}>
                         {states.name}
                     </option>
                 ))}
             </select>
             <p>Genre</p>
-            <select name="genres">
-                {data.genres.map((genres) => (
+            <select name="genres" onChange={props.selectedGenreHandler}>
+                <option value=""></option>
+                {genresList.map((genres) => (
                     <option key={genres.id} value={genres.name}>
                         {genres.name}
                     </option>

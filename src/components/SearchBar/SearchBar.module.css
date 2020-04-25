@@ -8,10 +8,20 @@
     transform: translate(-50%, -50%);
     background-color: white;
     border-radius: 10px;
+    padding-top: 20px;
 }
 
-.SearchInput {
+.SearchContainer {
     display: flex;
     justify-content: space-evenly;
+    height: 2rem;
+}
+
+.SearchBar input {
     border-radius: 5px;
+    padding: 5px;
+}
+
+.SearchBar hr {
+    width: 95%;
 }

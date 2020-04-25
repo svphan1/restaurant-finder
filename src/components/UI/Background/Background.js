@@ -5,7 +5,10 @@ import classes from './Background.module.css';
 
 const Background = (props) => (
     <div className={classes.Background}>
-        <SearchBar />
+        <SearchBar
+            selectedStateHandler={props.selectedStateHandler}
+            selectedGenreHandler={props.selectedGenreHandler}
+        />
         <img src={background} alt="food background" />
     </div>
 );

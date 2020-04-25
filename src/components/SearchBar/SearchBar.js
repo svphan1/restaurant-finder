@@ -1,15 +1,20 @@
 import React from 'react';
 import classes from './SearchBar.module.css';
-import StatesDropdown from './StatesDropdown/StatesDropdown';
+import StatesDropdown from './FilterDropdowns/StatesDropdown';
+import Button from '../UI/Button/Button';
 
 const SearchBar = (props) => (
     <div className={classes.SearchBar}>
-        <div className={classes.SearchInput}>
+        <div className={classes.SearchContainer}>
             <input type="text" placeholder="Enter restaurant name..."></input>
             <input type="text" placeholder="Enter city name..."></input>
-            <button>Search</button>
+            <Button>Search</Button>
         </div>
-        <StatesDropdown />
+        <StatesDropdown
+            selectedStateHandler={props.selectedStateHandler}
+            selectedGenreHandler={props.selectedGenreHandler}
+        />
+        <hr />
     </div>
 );
 

@@ -2,7 +2,7 @@ import React from 'react';
 import classes from './TableCard.module.css';
 
 const TableCard = (props) => {
-    let limitedResult = props.result.slice(0, 10);
+    let limitedResult = props.restaurants.slice(0, 10);
     let sortedResult = limitedResult.sort(function (a, b) {
         if (a.name < b.name) return -1;
         else if (a.name > b.name) return 1;
