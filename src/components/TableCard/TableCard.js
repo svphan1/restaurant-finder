@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import classes from './TableCard.module.css';
 import Button from '../UI/Button/Button';
 
@@ -10,7 +10,7 @@ const TableCard = (props) => {
     });
 
     return (
-        <div>
+        <Fragment>
             {sortedResult.map((item) => (
                 <div key={item.id} className={classes.TableCard}>
                     <img
@@ -30,7 +30,7 @@ const TableCard = (props) => {
                     </div>
                 </div>
             ))}
-        </div>
+        </Fragment>
     );
 };
 

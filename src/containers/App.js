@@ -36,23 +36,45 @@ const App = () => {
             selectedState.length ||
             selectedGenre.length
         ) {
-            console.log(restaurants, selectedState, selectedGenre);
+            console.log(
+                filteredRestaurants,
+                restaurants,
+                selectedState,
+                selectedGenre
+            );
         }
     }, [filteredRestaurants, restaurants]);
 
-    const filterRestaurantsByState = (state) => {
+    const filterRestaurantsByState = (value) => {
         let restaurantsToUse =
             (city || restaurant) && filteredRestaurants.length
                 ? filteredRestaurants
                 : restaurants;
-        return restaurantsToUse.filter((result) => result.state === state);
+
+        if (value && value !== selectedState) {
+            restaurantsToUse = restaurants;
+        } else if ((city || restaurant) && filteredRestaurants.length) {
+            restaurantsToUse = filteredRestaurants;
+        } else {
+            restaurantsToUse = restaurants;
+        }
+        return restaurantsToUse.filter((result) => result.state === value);
     };
 
     const filterRestaurantsByGenre = (genre) => {
-        const restaurantsToUse =
+        let restaurantsToUse =
             (city || restaurant) && filteredRestaurants.length
                 ? filteredRestaurants
                 : restaurants;
+
+        if (genre && genre !== selectedGenre) {
+            restaurantsToUse = restaurants;
+        } else if ((city || restaurant) && filteredRestaurants.length) {
+            restaurantsToUse = filteredRestaurants;
+        } else {
+            restaurantsToUse = restaurants;
+        }
+
         return restaurantsToUse.filter((result) =>
             result.genre.includes(genre)
         );
@@ -61,8 +83,7 @@ const App = () => {
     const selectedStateHandler = (e) => {
         const { value } = e.target;
         setSelectedState(value);
-        const filtered = filterRestaurantsByState(value);
-        setFilteredRestaurants(filtered);
+        setFilteredRestaurants(filterRestaurantsByState(value));
     };
 
     const selectedGenreHandler = (e) => {
