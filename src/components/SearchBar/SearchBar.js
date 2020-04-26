@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useRef } from 'react';
 import classes from './SearchBar.module.css';
 import StatesDropdown from './FilterDropdowns/StatesDropdown';
 import Pagination from '../Pagination/Pagination';
@@ -12,7 +12,7 @@ const SearchBar = (props) => {
         const city = cityRef.current.value;
         const restaurant = restaurantRef.current.value;
 
-        props.handleSearch(city, restaurant);
+        props.searchHandler(city, restaurant);
     };
 
     const handleChange = (event) => {

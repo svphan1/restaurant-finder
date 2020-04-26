@@ -1,5 +1,6 @@
 import React from 'react';
 import classes from './TableCard.module.css';
+import Button from '../UI/Button/Button';
 
 const TableCard = (props) => {
     let sortedResult = props.restaurants.sort(function (a, b) {
@@ -12,12 +13,21 @@ const TableCard = (props) => {
         <div>
             {sortedResult.map((item) => (
                 <div key={item.id} className={classes.TableCard}>
-                    <p>{item.name}</p>
-                    <p>{item.genre}</p>
-                    <p>{item.telephone}</p>
-                    <p>
-                        {item.city}, {item.state}
-                    </p>
+                    <img
+                        src="http://lorempixel.com/250/200/food"
+                        alt="Restaurant"
+                    ></img>
+                    <div className={classes.TableText}>
+                        <p>{item.name}</p>
+                        <p>
+                            Genre: <span>{item.genre}</span>
+                        </p>
+                        <p>Phone: {item.telephone}</p>
+                        <p>
+                            Location: {item.city}, {item.state}
+                        </p>
+                        <Button>Order Now</Button>
+                    </div>
                 </div>
             ))}
         </div>

@@ -1,14 +1,105 @@
 .TableCard {
-    width: 60%;
+    width: 50%;
     border: 1px solid #ccc;
     border-radius: 5px;
     margin: 0 auto;
     margin-top: 3rem;
     padding-left: 1rem;
+    padding-bottom: 1rem;
     transition: 0.2s ease-in-out;
+    box-sizing: border-box;
 }
 
 .TableCard:hover {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     cursor: pointer;
+}
+
+.TableText {
+    display: inline-block;
+    position: absolute;
+    padding-left: 1.5rem;
+}
+
+.TableCard img {
+    margin: 13px 1px -7px;
+    border-radius: 5px;
+}
+
+.TableCard p:first-child {
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.TableCard p:nth-child(4) {
+    margin-bottom: 0.7rem;
+}
+
+.TableCard span {
+    color: rgb(78, 78, 255);
+}
+
+.Additional {
+    width: 100%;
+    height: 3rem;
+    background-color: #eee;
+    border-radius: 4px;
+}
+
+.TableCard Button {
+    height: 2.5rem;
+    width: 7rem;
+    margin: 0 auto;
+}
+
+@media (max-width: 1650px) {
+    .TableCard {
+        width: 60rem;
+    }
+}
+
+@media (max-width: 1400px) {
+    .TableCard {
+        width: 56rem;
+    }
+}
+
+@media (max-width: 1000px) {
+    .TableCard {
+        width: 45rem;
+    }
+
+    .TableText {
+        width: 20rem;
+    }
+
+    .TableCard p {
+        margin-top: 10px;
+        margin-bottom: 13px;
+    }
+}
+
+@media (max-width: 800px) {
+    .TableCard {
+        width: 38rem;
+    }
+
+    .TableCard span {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .TableCard {
+        width: 35rem;
+    }
+
+    .TableCard img {
+        width: 200px;
+    }
+
+    .TableCard p {
+        margin-top: 7px;
+        margin-bottom: -5px;
+    }
 }

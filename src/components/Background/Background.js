@@ -6,7 +6,7 @@ import classes from './Background.module.css';
 const Background = (props) => (
     <div className={classes.Background}>
         <SearchBar
-            handleSearch={props.handleSearch}
+            searchHandler={props.searchHandler}
             resetSearch={props.resetSearch}
             selectedStateHandler={props.selectedStateHandler}
             selectedGenreHandler={props.selectedGenreHandler}

@@ -9,3 +9,23 @@
     height: 20px;
     margin-top: 1rem;
 }
+
+@media (max-width: 800px) {
+    .StatesDropdown {
+        margin: 1rem 6rem;
+    }
+
+    .StatesDropdown select {
+        width: 8rem;
+    }
+}
+
+@media (max-width: 700px) {
+    .StatesDropdown {
+        margin-left: 4rem;
+    }
+
+    .StatesDropdown select {
+        width: 5rem;
+    }
+}

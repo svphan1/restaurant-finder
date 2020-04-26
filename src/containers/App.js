@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useEffect, useRef } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 import Layout from '../components/Layout/Layout';
 import TableCard from '../components/TableCard/TableCard';
 import Background from '../components/Background/Background';
@@ -71,7 +71,7 @@ const App = () => {
         setFilteredRestaurants(filterRestaurantsByGenre(value));
     };
 
-    const handleSearch = (city, restaurant) => {
+    const searchHandler = (city, restaurant) => {
         if (!city && !restaurant) {
             return;
         }
@@ -116,7 +116,7 @@ const App = () => {
         <Fragment>
             <Layout>
                 <Background
-                    handleSearch={handleSearch}
+                    searchHandler={searchHandler}
                     resetSearch={resetSearch}
                     selectedStateHandler={selectedStateHandler}
                     selectedGenreHandler={selectedGenreHandler}
@@ -133,7 +133,7 @@ const App = () => {
                             fontSize: '1.2rem',
                         }}
                     >
-                        Welp, sorry no restaurants were found for that state!
+                        Welp, sorry no match was found for that state!
                     </p>
                 ) : (
                     <TableCard

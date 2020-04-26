@@ -8,3 +8,10 @@
     width: 100%;
     margin-top: -11.5rem;
 }
+
+@media (max-width: 420px) {
+    .Background img {
+        height: 100%;
+        margin-top: -11.5rem;
+    }
+}

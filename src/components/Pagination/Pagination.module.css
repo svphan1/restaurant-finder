@@ -20,3 +20,9 @@
     margin: 0 auto;
     text-decoration: none;
 }
+
+@media (max-width: 800px) {
+    .Pagination {
+        padding: 0;
+    }
+}
