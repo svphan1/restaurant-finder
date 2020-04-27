@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 import classes from './TableCard.module.css';
+import food from '../../assets/images/food.jpg';
 import Button from '../UI/Button/Button';
 
 const TableCard = (props) => {
@@ -17,10 +18,7 @@ const TableCard = (props) => {
         <Fragment>
             {sortedResult.map((item) => (
                 <div key={item.id} className={classes.TableCard}>
-                    <img
-                        src="http://lorempixel.com/250/200/food"
-                        alt="Restaurant"
-                    ></img>
+                    <img src={food} alt="Restaurant"></img>
                     <div className={classes.TableText}>
                         <p className={classes.RestaurantName}>{item.name}</p>
                         <p>
