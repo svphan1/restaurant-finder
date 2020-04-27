@@ -33,24 +33,6 @@ const App = () => {
         getRestaurants();
     }, []);
 
-    useEffect(() => {
-        if (
-            restaurants.length ||
-            selectedState.length ||
-            selectedGenre.length
-        ) {
-            console.log(
-                restaurants,
-                filteredRestaurants,
-                'selectedState: ' + selectedState,
-                'selectedGenre: ' + selectedGenre,
-                'city: ' + city,
-                'restaurant: ' + restaurant,
-                'current restaurants: ' + currentRestaurants
-            );
-        }
-    }, [filteredRestaurants, restaurants, selectedState, selectedGenre]);
-
     const filterRestaurantsByState = (state) => {
         let restaurantsToUse;
 
