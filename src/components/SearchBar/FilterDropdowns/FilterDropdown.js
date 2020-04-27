@@ -1,7 +1,7 @@
 import React from 'react';
 import states from './states.json';
 import genres from './genres.json';
-import classes from './StatesDropdown.module.css';
+import classes from './FilterDropdown.module.css';
 
 const StatesDropdown = (props) => {
     const statesList = states;

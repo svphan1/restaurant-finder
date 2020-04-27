@@ -9,6 +9,10 @@ const TableCard = (props) => {
         return 0;
     });
 
+    if (props.loading) {
+        return <h2 style={{ textAlign: 'center' }}>Loading...</h2>;
+    }
+
     return (
         <Fragment>
             {sortedResult.map((item) => (
@@ -18,7 +22,7 @@ const TableCard = (props) => {
                         alt="Restaurant"
                     ></img>
                     <div className={classes.TableText}>
-                        <p>{item.name}</p>
+                        <p className={classes.RestaurantName}>{item.name}</p>
                         <p>
                             Genre: <span>{item.genre}</span>
                         </p>
@@ -26,7 +30,27 @@ const TableCard = (props) => {
                         <p>
                             Location: {item.city}, {item.state}
                         </p>
-                        <Button>Order Now</Button>
+                        <div className={classes.BtnContainer}>
+                            <Button>Order Now</Button>
+                            <a className={classes.Button} href="#moreinfo">
+                                More Info
+                            </a>
+                        </div>
+                        <div className={classes.Content}>
+                            <div id="moreinfo" className={classes.Overlay}>
+                                <div className={classes.Popup}>
+                                    <p>Hours: {item.hours}</p>
+                                    <p>Attire: {item.attire}</p>
+                                    <p>Website: {item.website}</p>
+                                    <p>
+                                        Tags: <span>{item.tags}</span>
+                                    </p>
+                                    <a className={classes.Close} href="#">
+                                        &times;
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             ))}

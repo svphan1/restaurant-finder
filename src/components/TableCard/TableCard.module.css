@@ -26,7 +26,7 @@
     border-radius: 5px;
 }
 
-.TableCard p:first-child {
+.RestaurantName {
     font-weight: bold;
     font-size: 1.2rem;
 }
@@ -39,6 +39,16 @@
     color: rgb(78, 78, 255);
 }
 
+.TableCard Button {
+    height: 2.5rem;
+    width: 7rem;
+    margin: 0 auto;
+}
+
+.TableCard Button:active {
+    transform: translate(0px, 4px);
+}
+
 .Additional {
     width: 100%;
     height: 3rem;
@@ -46,10 +56,8 @@
     border-radius: 4px;
 }
 
-.TableCard Button {
-    height: 2.5rem;
-    width: 7rem;
-    margin: 0 auto;
+.BtnContainer {
+    display: inline-flex;
 }
 
 @media (max-width: 1650px) {
@@ -101,5 +109,76 @@
     .TableCard p {
         margin-top: 7px;
         margin-bottom: -5px;
+    }
+}
+
+/* More Info Popup */
+
+.Button {
+    font-size: 1em;
+    padding: 7px;
+    margin-left: 10px;
+    color: #fff;
+    background-color: #ccc;
+    border-radius: 5px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease-out;
+}
+
+.Button:hover {
+    background: #eee;
+}
+
+.Overlay {
+    position: fixed;
+    top: 32%;
+    bottom: 0;
+    left: 35%;
+    right: 0;
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+}
+.Overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 100;
+}
+
+.Popup {
+    margin: 70px auto;
+    border: 1px solid #ccc;
+    padding: 20px;
+    background: #fff;
+    border-radius: 5px;
+    width: 39%;
+    position: relative;
+}
+
+.Popup .Close {
+    position: absolute;
+    top: 5px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 30px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #333;
+}
+.Popup .Close:hover {
+    color: #ccc;
+}
+.Popup .Content {
+    max-height: 30%;
+    overflow: auto;
+}
+
+@media screen and (max-width: 700px) {
+    .Box {
+        width: 70%;
+    }
+    .Popup {
+        width: 70%;
     }
 }

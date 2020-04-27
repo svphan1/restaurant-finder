@@ -1,10 +1,11 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import Layout from '../components/Layout/Layout';
 import TableCard from '../components/TableCard/TableCard';
-import Background from '../components/Background/Background';
+import SearchLayout from '../components/SearchLayout/SearchLayout';
 
 const App = () => {
-    const [restaurants, setData] = useState([]);
+    const [restaurants, setRestaurants] = useState([]);
+    const [loading, setLoading] = useState(false);
     const [city, setCity] = useState([]);
     const [restaurant, setRestaurant] = useState([]);
     const [selectedState, setSelectedState] = useState('');
@@ -14,6 +15,7 @@ const App = () => {
     const [restaurantsPerPage] = useState(10);
 
     async function getRestaurants() {
+        setLoading(true);
         await fetch(
             'https://code-challenge.spectrumtoolbox.com/api/restaurants',
             {
@@ -23,7 +25,8 @@ const App = () => {
             }
         )
             .then((res) => res.json())
-            .then(setData);
+            .then(setRestaurants);
+        setLoading(false);
     }
 
     useEffect(() => {
@@ -37,39 +40,42 @@ const App = () => {
             selectedGenre.length
         ) {
             console.log(
-                filteredRestaurants,
                 restaurants,
-                selectedState,
-                selectedGenre
+                filteredRestaurants,
+                'selectedState: ' + selectedState,
+                'selectedGenre: ' + selectedGenre,
+                'city: ' + city,
+                'restaurant: ' + restaurant,
+                'current restaurants: ' + currentRestaurants
             );
         }
-    }, [filteredRestaurants, restaurants]);
+    }, [filteredRestaurants, restaurants, selectedState, selectedGenre]);
 
-    const filterRestaurantsByState = (value) => {
-        let restaurantsToUse =
-            (city || restaurant) && filteredRestaurants.length
-                ? filteredRestaurants
-                : restaurants;
+    const filterRestaurantsByState = (state) => {
+        let restaurantsToUse;
 
-        if (value && value !== selectedState) {
+        if (state && state !== selectedState) {
             restaurantsToUse = restaurants;
-        } else if ((city || restaurant) && filteredRestaurants.length) {
+        } else if (
+            (city || restaurant || selectedGenre) &&
+            filteredRestaurants.length
+        ) {
             restaurantsToUse = filteredRestaurants;
         } else {
             restaurantsToUse = restaurants;
         }
-        return restaurantsToUse.filter((result) => result.state === value);
+        return restaurantsToUse.filter((result) => result.state === state);
     };
 
     const filterRestaurantsByGenre = (genre) => {
-        let restaurantsToUse =
-            (city || restaurant) && filteredRestaurants.length
-                ? filteredRestaurants
-                : restaurants;
+        let restaurantsToUse;
 
         if (genre && genre !== selectedGenre) {
             restaurantsToUse = restaurants;
-        } else if ((city || restaurant) && filteredRestaurants.length) {
+        } else if (
+            (city || restaurant || selectedState) &&
+            filteredRestaurants.length
+        ) {
             restaurantsToUse = filteredRestaurants;
         } else {
             restaurantsToUse = restaurants;
@@ -84,12 +90,18 @@ const App = () => {
         const { value } = e.target;
         setSelectedState(value);
         setFilteredRestaurants(filterRestaurantsByState(value));
+        if (!value) {
+            resetSearch();
+        }
     };
 
     const selectedGenreHandler = (e) => {
         const { value } = e.target;
         setSelectedGenre(value);
         setFilteredRestaurants(filterRestaurantsByGenre(value));
+        if (!value) {
+            resetSearch();
+        }
     };
 
     const searchHandler = (city, restaurant) => {
@@ -100,18 +112,23 @@ const App = () => {
         setCity(city);
         setRestaurant(restaurant);
 
-        const searchedRestaurants = restaurants.filter((r) => {
+        let restaurantsToUse;
+
+        if ((selectedGenre || selectedState) && filteredRestaurants.length) {
+            restaurantsToUse = filteredRestaurants;
+        } else {
+            restaurantsToUse = restaurants;
+        }
+
+        const searchedRestaurants = restaurantsToUse.filter((r) => {
             if (city && restaurant) {
-                console.log('both section');
                 return (
                     r.city.toLowerCase() === city.toLowerCase() ||
                     r.name.toLowerCase() === restaurant.toLowerCase()
                 );
             } else if (city && !restaurant) {
-                console.log('city section');
                 return r.city.toLowerCase() === city.toLowerCase();
             }
-            console.log('res section');
             return r.name.toLowerCase() === restaurant.toLowerCase();
         });
 
@@ -119,13 +136,21 @@ const App = () => {
     };
 
     const resetSearch = () => {
-        setFilteredRestaurants([]);
+        if (selectedState || selectedGenre) {
+            return;
+        } else {
+            setFilteredRestaurants([]);
+        }
     };
 
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
     const indexOfLastRestaurant = currentPage * restaurantsPerPage;
     const indexOfFirstRestaurant = indexOfLastRestaurant - restaurantsPerPage;
+    const currentFilteredRestaurants = filteredRestaurants.slice(
+        indexOfFirstRestaurant,
+        indexOfLastRestaurant
+    );
     const currentRestaurants = restaurants.slice(
         indexOfFirstRestaurant,
         indexOfLastRestaurant
@@ -136,7 +161,7 @@ const App = () => {
     return (
         <Fragment>
             <Layout>
-                <Background
+                <SearchLayout
                     searchHandler={searchHandler}
                     resetSearch={resetSearch}
                     selectedStateHandler={selectedStateHandler}
@@ -154,13 +179,14 @@ const App = () => {
                             fontSize: '1.2rem',
                         }}
                     >
-                        Welp, sorry no match was found for that state!
+                        Welp, sorry! No match was found for that state!
                     </p>
                 ) : (
                     <TableCard
+                        loading={loading}
                         restaurants={
                             filteredRestaurants.length
-                                ? filteredRestaurants
+                                ? currentFilteredRestaurants
                                 : currentRestaurants
                         }
                     />

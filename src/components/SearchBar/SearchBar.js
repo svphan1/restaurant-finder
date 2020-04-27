@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import classes from './SearchBar.module.css';
-import StatesDropdown from './FilterDropdowns/StatesDropdown';
+import FilterDropdown from './FilterDropdowns/FilterDropdown';
 import Pagination from '../Pagination/Pagination';
 import Button from '../UI/Button/Button';
 
@@ -8,7 +8,7 @@ const SearchBar = (props) => {
     const cityRef = useRef('');
     const restaurantRef = useRef('');
 
-    const handleClick = () => {
+    const handleSearch = () => {
         const city = cityRef.current.value;
         const restaurant = restaurantRef.current.value;
 
@@ -36,9 +36,9 @@ const SearchBar = (props) => {
                     ref={cityRef}
                     onChange={handleChange}
                 ></input>
-                <Button onClick={handleClick}>Search</Button>
+                <Button onClick={handleSearch}>Search</Button>
             </div>
-            <StatesDropdown
+            <FilterDropdown
                 selectedStateHandler={props.selectedStateHandler}
                 selectedGenreHandler={props.selectedGenreHandler}
             />
