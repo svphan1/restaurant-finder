@@ -18,7 +18,7 @@ const Pagination = ({ restaurantsPerPage, totalRestaurants, paginate }) => {
                 <span>Page:</span>
                 {pageNumbers.map((number) => (
                     <li key={number}>
-                        <a onClick={() => paginate(number)} href="!#">
+                        <a onClick={() => paginate(number)} href="#">
                             {number}
                         </a>
                     </li>
