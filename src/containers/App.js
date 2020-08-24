@@ -2,6 +2,7 @@ import React, { Fragment, useState, useEffect } from 'react';
 import Layout from '../components/Layout/Layout';
 import TableCard from '../components/TableCard/TableCard';
 import SearchLayout from '../components/SearchLayout/SearchLayout';
+import getData from '../getData';
 
 const App = () => {
     const [restaurants, setRestaurants] = useState([]);
@@ -16,16 +17,8 @@ const App = () => {
 
     async function getRestaurants() {
         setLoading(true);
-        await fetch(
-            'https://code-challenge.spectrumtoolbox.com/api/restaurants',
-            {
-                headers: {
-                    Authorization: 'Api-Key q3MNxtfep8Gt',
-                },
-            }
-        )
-            .then((res) => res.json())
-            .then(setRestaurants);
+        let data = await getData();
+        setRestaurants(data);
         setLoading(false);
     }
 
@@ -164,15 +157,15 @@ const App = () => {
                         Welp, sorry! No match was found for that state!
                     </p>
                 ) : (
-                    <TableCard
-                        loading={loading}
-                        restaurants={
-                            filteredRestaurants.length
-                                ? currentFilteredRestaurants
-                                : currentRestaurants
-                        }
-                    />
-                )}
+                        <TableCard
+                            loading={loading}
+                            restaurants={
+                                filteredRestaurants.length
+                                    ? currentFilteredRestaurants
+                                    : currentRestaurants
+                            }
+                        />
+                    )}
             </Layout>
         </Fragment>
     );
