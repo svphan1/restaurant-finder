@@ -2,7 +2,8 @@ import React, { Fragment, useState, useEffect } from 'react';
 import Layout from '../components/Layout/Layout';
 import TableCard from '../components/TableCard/TableCard';
 import SearchLayout from '../components/SearchLayout/SearchLayout';
-import getData from '../getData';
+const API_KEY = process.env.REACT_APP_API_KEY;
+const API_URL = `https://restaurantsapp.com/api/restaurants`
 
 const App = () => {
     const [restaurants, setRestaurants] = useState([]);
@@ -17,7 +18,13 @@ const App = () => {
 
     async function getRestaurants() {
         setLoading(true);
-        let data = await getData();
+        const data = await fetch(API_URL,
+            {
+                headers: {
+                    Authorization: `${API_KEY}`,
+                },
+            })
+            .then((res) => res.json())
         setRestaurants(data);
         setLoading(false);
     }
